@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Orders
+{% endblock %}
+{% block body %}
+
+<div class="row">
+<div class="col-md-9 mt-2">
+    <h5 class="bg-info text-white p-2">Customer Details</h5>
+    <p><b>Name:</b>{{user.username}}</p>
+    <p><b>Phone:</b>123456</p>
+    <p><b>Email:</b>{{user.email}}</p>
+
+    <h5 class="bg-info text-white p-2">Cart Details</h5>
+    {% for x in cart_item %}
+    <div class="row">
+        <div class="col-md-4 mt-2">
+            <img src="{{x.product.image.url}}" width="100%" style="height: 200px;">
+        </div>
+        <div class="col-md-8">
+            <p><b>Product Name:</b>{{x.product.product_name}}</p>
+            <p><b>Price:</b>{{x.product.price}}</p>
+            <p><b>Quantity:</b>{{x.quantity}}
+            {% comment %} <a href="/updateQty/0/{{x.product.product_id}}"><button class="btn btn-danger">-</button></a>
+            <input type="number" value="{{x.quantity}}">
+            <a href="/updateQty/1/{{x.product.product_id}}"><button class="btn btn-danger">+</button></a> {% endcomment %}
+            
+            </p>
+            {% comment %} <p><b>Product Details:</b>&nbsp;&nbsp;{{x.product.desc}}</p>
+            <a href="#"><button type="submit" class="btn btn-warning">Buy</button></a>
+            <a href="/remove/{{x.product_id}}"><button type="submit" class="btn btn-danger">Remove</button></a> {% endcomment %}
+        </div>
+    </div>
+    {% empty %}
+    
+    <div class="row">
+        <div class="col">
+            Your Cart is Empty
+            Continue Shopping
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="col-md-3 mt-2">
+    <h5 class="bg-info text-white p-2">Total Amount Section</h5>
+    <p><b>Total Items:</b>&nbsp;&nbsp;{{items}}</p>
+    <hr>
+    <p><b>Total Amount:</b>&nbsp;&nbsp;{{total}}</p>
+    <a href="/payment"><button class="btn bg-warning">Make Payment</button></a>
+    
+</div>
+</div>
+
+
+   
+       
+
+
+
+{% endblock %}
+
+

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h6>Search result
+    {% if query %} for "{{query}}"
+    {% endif %}
+</h6>
+    <br>
+    <br>
+    <table border="1" width="500px" align="center" width="100%">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Image</th>
+
+        </tr>
+        {% for i in result %}
+        <tr>
+            <td>{{i.product_name}}</td>
+            <td>{{i.desc}}</td>
+            <td>{{i.image.url}}</td>
+        </tr>
+        {% endfor %}
+        
+    </table>
+
+{% endblock %}
